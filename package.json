@@ -2,10 +2,11 @@
   "name": "koester-website",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@4.3.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next start",
     "build": "next build",
-    "start": "next start",
+    "start": "next dev --experimental-https --experimental-https-key localhost-key.pem --experimental-https-cert localhost.pem",
     "lint": "next lint"
   },
   "dependencies": {
@@ -24,6 +25,5 @@
     "prettier-plugin-tailwindcss": "^0.6.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  },
-  "packageManager": "yarn@4.2.2"
+  }
 }

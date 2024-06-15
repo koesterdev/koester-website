@@ -1,0 +1,91 @@
+{
+  "experience": [
+    {
+      "position": "Technical Anchor — Full Stack Web Developer",
+      "company": "Ford Motor Company",
+      "startDate": "Nov. 2021",
+      "endDate": "Present",
+      "location": "Remote",
+      "content": [
+        "Developed and launched internal large-language model chat website using React and Next.js.",
+        "Integrated site with OpenAI GPT-4, Google PaLM 2, and Meta Llama 2 models to support a variety of chat experiences.",
+        "Scaled AI chat Node.js backend to support 50,000 users and 5000 daily conversations.",
+        "Implemented file-based retrieval-augmented generation workflows to make LLMs aware of user-provided information.",
+        "Optimize page loading by statically rendering pages using React Server Components and streaming server-side rendering.",
+        "Created CI/CD pipeline using Google Cloud Build to test and deploy serverless applications.",
+        "Developed public API to provide low-cost access to LLMs within Ford.",
+        "Launched internal NLP platform using React to allow data scientists to index, search, and label natural-language text data.",
+        "Integrated NLP website with classification models to label data automatically and implemented active learning workflow to reduce the amount of manual labeling that was needed before a model could be trained.",
+        "Developed and deployed model catalog where users could publish models to be reused across common data formats.",
+        "Rewrote testing standards to increase confidence in code by making tests more closely reflect user behavior.",
+        "Collaborated with product owners to estimate, prioritize, and delegate user stories. "
+      ]
+    },
+    {
+      "position": "Connectivity Software Research Engineer",
+      "company": "Ford Motor Company",
+      "startDate": "Feb. 2019",
+      "endDate": "Nov. 2021",
+      "location": "Dearborn, MI",
+      "content": [
+        "Created in-vehicle application in C++ to crowdsource road maps by collecting road feature data and uploading it to cloud.",
+        "Lead research team to provide recommendations on next-generation vehicle-to-cloud communication architecture.",
+        "Reduced on-vehicle script deployment time from 6 months to 1 month by developing script validation tooling.",
+        "Created error-tolerant Lua parser and editor extension, allowing script developers to receive code completion and diagnostics even when scripts are in a syntactically invalid state."
+      ]
+    },
+    {
+      "position": "Software Development Intern",
+      "company": "Amazon",
+      "startDate": "Jun. 2018",
+      "endDate": "Sep. 2018",
+      "location": "Seattle, WA",
+      "content": [
+        "Created AWS Lambda Python package to automate the process of streaming DynamoDB data to an Elasticsearch index.",
+        "Computed worker analytics for the Mechanical Turk platform to identify low-performing workers, allowing users to gain insights into their batches and identify areas to reduce cost."
+      ]
+    },
+    {
+      "position": "Full Stack Web Developer",
+      "company": "Integrative Systems + Design",
+      "startDate": "Jan. 2017",
+      "endDate": "May 2018",
+      "location": "Ann Arbor, MI",
+      "content": [
+        "Created mobile application and REST API to provide faculty with rapid access to student records.",
+        "Reduced load time of internal pages by loading data asynchronously and compressing HTTP response bodies."
+      ]
+    }
+  ],
+  "education": {
+    "institution": "University of Michigan",
+    "degree": "Bacheleor of Science Engineering in Computer Science",
+    "date": "Dec. 2018",
+    "gpa": "3.75",
+    "accolades": "Dean's List Scholar"
+  },
+  "skills": {
+    "languages": [
+      "C++",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Rust",
+      "HTML",
+      "CSS",
+      "Tailwind"
+    ],
+    "frameworks": [
+      "Angular",
+      "React",
+      "Vite",
+      "Next.js",
+      "Webpack",
+      "Electron",
+      "Express",
+      "MongoDB",
+      "SQL",
+      "Node.js"
+    ]
+  }
+}
