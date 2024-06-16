@@ -1,0 +1,103 @@
+{
+  "experience": [
+    {
+      "company": "Ford Motor Company",
+      "position": "Technical Anchor — Full Stack Web Developer",
+      "startDate": "Nov. 2022",
+      "endDate": "Present",
+      "location": "Remote",
+      "projects": [
+        {
+          "name": "Large-Language Model Website",
+          "content": [
+            "Designed and implemented Ford internal large-language model chat website using React and Tailwind.",
+            "Interfaced with OpenAI GPT, Google Gemini, and Meta Llama models to provide LLM capabilities to Ford employees.",
+            "Designed and implemented internal API to expose LLM capabilities to Ford applications programatically.",
+            "Scaled Node.js backend to support over 50,000 users and 5,000 daily conversations.",
+            "Implemented response streaming to reduce response times and improve user-experience",
+            "Optimized site performance by migrating frontend to Next.js and using server-side rendering.",
+            "Enforced code-quality and test coverage standards by reviewing code changes.",
+            "Collaborated with product owners to define, prioritize, and delegate user stories.",
+            "Integrated NLP website with classification models to label data automatically and implemented active learning workflow to reduce the amount of manual labeling that was needed before a model could be trained.",
+            "Developed and deployed model catalog where users could publish models to be reused across common data formats.",
+            "Rewrote testing standards to increase confidence in code by making tests more closely reflect user behavior.",
+            "Collaborated with product owners to estimate, prioritize, and delegate user stories. "
+          ]
+        },
+        {
+          "name": "Natural Language Processing Website",
+          "content": [
+            "Created website using React and Node.js to allow users to index, search, and label company data.",
+            "Designed and implemented model training workflow to train models to label data automatically."
+          ]
+        }
+      ]
+    },
+    {
+      "position": "Connectivity Software Research Engineer",
+      "company": "Ford Motor Company",
+      "startDate": "Feb. 2019",
+      "endDate": "Nov. 2022",
+      "location": "Dearborn, MI",
+      "projects": [
+        {
+          "name": "BlueCruise Driver Assistance",
+          "content": [
+            "Implemented initial version of the Connected BlueCruise feature in Ford vehicles in C++.",
+            "Integrated and debugged first iteration of software in test vehicle to meet vehicle release timeline.",
+            "Aggregated road feature data in Java to generate SQL database to represent highway map data for North America",
+            "Received Research & Engineering Technical Achievement award for implementation."
+          ]
+        }
+      ]
+    },
+    {
+      "position": "Reserach Engineering Intern",
+      "company": "Ford Motor Company",
+      "startDate": "Jun. 2018",
+      "endDate": "Sep. 2018",
+      "location": "Dearborn, MI",
+      "projects": [
+        {
+          "name": "Block-Based Script Editor",
+          "content": [
+            "Created block-based script editor desktop application in JavaScript to enable rapid deployment of scripts to Ford vehicles.",
+            "Implemented abilitiy to convert blocks into Lua code which includes custom data collection APIs."
+          ]
+        }
+      ]
+    }
+  ],
+  "education": {
+    "institution": "University of Michigan",
+    "degree": "Bacheleor of Science Engineering in Computer Science",
+    "date": "Dec. 2018",
+    "gpa": "3.6"
+  },
+  "skills": {
+    "languages": [
+      "C++",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Rust",
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "SQL"
+    ],
+    "frameworks": [
+      "Angular",
+      "React",
+      "Vite",
+      "Next.js",
+      "Webpack",
+      "Electron",
+      "Express",
+      "Angular",
+      "MongoDB",
+      "SQL",
+      "Node.js"
+    ]
+  }
+}
