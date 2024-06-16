@@ -25,10 +25,33 @@ const MarkPage = () => {
         )}
         <ul></ul>
       </section>
-      <h2>Education</h2>
-      <h2>Technical Skills</h2>
+      <section className="mb-4">
+        <h2>Education</h2>
+        <p>{resume.education.institution}</p>
+        <p>{resume.education.degree}</p>
+        <p>{resume.education.gpa}</p>
+      </section>
+      <section className="mb-4">
+        <h2>Technical Skills</h2>
+        <h3>Programming Languages</h3>
+        <ul>
+          {resume.skills.languages.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+        <h3>Frameworks</h3>
+        <ul>
+          {resume.skills.frameworks.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
+};
+
+export const metadata = {
+  title: 'About Mark Koester',
 };
 
 export default MarkPage;
