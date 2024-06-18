@@ -23,24 +23,31 @@ const MarkPage = () => {
           ))}
         </section>
         <section className="mb-4">
-          <h2>Education</h2>
-          <p>{resume.education.institution}</p>
-          <p>{resume.education.degree}</p>
-          <p>{resume.education.gpa}</p>
+          <SectionHeading title="Education" />
+          <div className="mt-2 flex justify-between">
+            <p className="font-semibold">{resume.education.institution}</p>
+            <p className="italic">{resume.education.date}</p>
+          </div>
+          <div className="flex justify-between">
+            <p className="font-semibold">{resume.education.degree}</p>
+            <p>
+              GPA: {resume.education.gpa}—{resume.education.accolades}
+            </p>
+          </div>
         </section>
-        <section className="mb-4">
-          <h2>Technical Skills</h2>
-          <h3>Programming Languages</h3>
-          <ul>
-            {resume.skills.languages.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
+        <section className="mb-4 pb-8">
+          <SectionHeading title="Technical Skills" />
+          <ul className="mt-2">
+            <li>
+              <span className="font-semibold">Programming Languages: </span>
+              {resume.skills.languages.join(', ')}
+            </li>
           </ul>
-          <h3>Frameworks</h3>
           <ul>
-            {resume.skills.frameworks.map((skill) => (
-              <li key={skill}>{skill}</li>
-            ))}
+            <li>
+              <span className="font-semibold">Frameworks: </span>
+              {resume.skills.frameworks.join(', ')}
+            </li>
           </ul>
         </section>
       </div>
@@ -48,6 +55,7 @@ const MarkPage = () => {
   );
 };
 
+// Change to just section with children
 const SectionHeading = ({ title }: SectionProps) => {
   return (
     <h2 className="border-b border-b-gray-900 text-xl font-semibold uppercase tracking-widest">
