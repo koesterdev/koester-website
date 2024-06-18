@@ -9,11 +9,13 @@ const Position = ({
   projects,
 }: Props) => (
   <div>
-    <h2>{company}</h2>
-    <div>{position}</div>
-    <em>
-      <span>{startDate}</span>-<span>{endDate}</span>
-    </em>
+    <h3>{position}</h3>
+    <div className="flex w-full justify-between">
+      <div className="font-medium">{company}</div>
+      <div className="italic">
+        <span>{startDate}</span>-<span>{endDate}</span>
+      </div>
+    </div>
     {projects.map((project, i) => (
       <Project key={i} {...project} />
     ))}
