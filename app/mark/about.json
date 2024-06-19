@@ -1,0 +1,14 @@
+{
+  "intro": "Hi, I'm Mark Koester, I'm a web developer",
+  "about": {
+    "early": "I was born in 1997 in Grosse Pointe Woods, Michigan with a twin brother named Nick.",
+    "school": "I became interested in programming in high school after reading some books on Java and trying a few basic projects. I decided I wanted to do programming as a career and went to the University of Michigan, where I earned a bachelor's degree in computer science.",
+    "career": "Although my early professional experience involved primarily Java and C++ programming, I always found myself doing random web development projects in my free time. I enjoyed the JavaScript ecosystem and noticed how the TypeScript code I wrote was much more expressive and safer due to its rich type system.",
+    "now": "My first full-time job was at Ford Motor Company writing software to run on vehicles, but I eventually transferred to a web development team where I could work on web development projects full time."
+  },
+  "facts": {
+    "twin": "I have a twin brother named Nick",
+    "cats": "I have two cats named Mark and Nick",
+    "bass": "I play bass"
+  }
+}

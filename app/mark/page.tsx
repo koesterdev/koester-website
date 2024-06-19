@@ -1,103 +1,53 @@
-import { EB_Garamond } from 'next/font/google';
-import { clsx } from 'clsx';
-import resume from './resume.json';
-
-const Garamond = EB_Garamond({
-  subsets: ['latin'],
-});
+import about from './about.json';
 
 const MarkPage = () => {
   return (
-    <main className={clsx('min-h-screen bg-gray-200 pt-8', Garamond.className)}>
-      <div className="mx-auto max-w-screen-lg rounded bg-white px-10 shadow-sm">
-        <h1 className="pt-8 text-center text-2xl font-semibold tracking-widest">
-          Mark Koester
-        </h1>
+    <main className="mx-auto max-w-screen-xl pb-48 pt-36 text-gray-900">
+      <section className="flex justify-between">
+        <h1 className="max-w-md text-5xl">{about.intro}</h1>
+        <PlaceholderImage width={400} height={400} />
+      </section>
+      <h2 className="text-3xl text-gray-700">Early life</h2>
+      <p className="max-w-[800px] text-4xl">{about.about.early}</p>
+      <div className="mt-16 w-fit">
+        <PlaceholderImage width={1000} height={600} />
+      </div>
+      <p className="mt-16 max-w-2xl text-2xl">{about.about.school}</p>
+      <p className="max- mt-16 max-w-2xl text-2xl">{about.about.career}</p>
+      <p className="max- mt-16 max-w-2xl text-2xl">{about.about.now}</p>
 
-        <section>
-          <SectionHeading title="Experience" />
-          {resume.experience.map((position, index) => (
-            <div key={index} className="mt-2">
-              <Position {...position} />
-            </div>
-          ))}
-        </section>
-        <section className="mb-4">
-          <SectionHeading title="Education" />
-          <div className="mt-2 flex justify-between">
-            <p className="font-semibold">{resume.education.institution}</p>
-            <p className="italic">{resume.education.date}</p>
-          </div>
-          <div className="flex justify-between">
-            <p className="font-semibold">{resume.education.degree}</p>
-            <p>
-              GPA: {resume.education.gpa}—{resume.education.accolades}
-            </p>
-          </div>
-        </section>
-        <section className="mb-4 pb-8">
-          <SectionHeading title="Technical Skills" />
-          <ul className="mt-2">
-            <li>
-              <span className="font-semibold">Programming Languages: </span>
-              {resume.skills.languages.join(', ')}
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <span className="font-semibold">Frameworks: </span>
-              {resume.skills.frameworks.join(', ')}
-            </li>
-          </ul>
-        </section>
+      <h2 className="mt-16 text-3xl text-gray-700">Fun facts</h2>
+      <p className="mt-4 rounded-md bg-gray-100 px-16 pb-16 pt-32 text-3xl transition-shadow hover:shadow-md">
+        {about.facts.twin}
+      </p>
+      <div className="mt-4 grid grid-cols-2 gap-4">
+        <p className="rounded-md bg-gray-100 px-16 pb-16 pt-32 text-3xl transition-shadow hover:shadow-md">
+          {about.facts.cats}
+        </p>
+        <p className="rounded-md bg-gray-100 px-16 pb-16 pt-32 text-3xl transition-shadow hover:shadow-md">
+          {about.facts.bass}
+        </p>
       </div>
     </main>
   );
 };
 
-// Change to just section with children
-const SectionHeading = ({ title }: SectionProps) => {
+const PlaceholderImage = ({ width, height }: PlaceholderProps) => {
   return (
-    <h2 className="border-b border-b-gray-900 text-xl font-semibold uppercase tracking-widest">
-      {title}
-    </h2>
+    <div
+      className="shrink-0 rounded-md bg-gray-300"
+      style={{
+        width,
+        height,
+      }}
+    />
   );
 };
 
-interface SectionProps {
-  title: string;
+interface PlaceholderProps {
+  width: number;
+  height: number;
 }
-
-const Position = ({
-  position,
-  startDate,
-  endDate,
-  company,
-  location,
-  content,
-}: PositionProps) => {
-  return (
-    <div>
-      <div className="flex justify-between">
-        <h3 className="font-semibold">{position}</h3>
-        <p className="italic">
-          {startDate}–{endDate}
-        </p>
-      </div>
-      <div className="flex justify-between">
-        <p className="font-semibold">{company}</p>
-        <p className="italic">{location}</p>
-      </div>
-      <ul className="ms-4 mt-1 list-disc">
-        {content.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-type PositionProps = (typeof resume)['experience'][number];
 
 export const metadata = {
   title: 'About Mark Koester',
