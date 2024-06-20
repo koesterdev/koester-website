@@ -1,3 +1,4 @@
+import ScrollSection from './ScrollSection';
 import about from './about.json';
 
 const MarkPage = () => {
@@ -12,11 +13,32 @@ const MarkPage = () => {
       <div className="mt-16 w-fit">
         <PlaceholderImage width={1000} height={600} />
       </div>
-      <p className="mt-16 max-w-2xl text-2xl">{about.about.school}</p>
-      <p className="max- mt-16 max-w-2xl text-2xl">{about.about.career}</p>
-      <p className="max- mt-16 max-w-2xl text-2xl">{about.about.now}</p>
+      <section className="relative py-16 pl-24">
+        <div className="absolute bottom-0 left-0 top-0 h-full w-1 rounded-full bg-gradient-to-b from-transparent via-sky-400 via-70%" />
+        <ScrollSection
+          threshold={0.6}
+          classNames="duration-500 transition-colors"
+          nonVisibleClassNames="text-transparent"
+        >
+          <p className="max-w-2xl text-2xl">{about.about.school}</p>
+        </ScrollSection>
+        <ScrollSection
+          threshold={0.6}
+          classNames="duration-500 transition-colors"
+          nonVisibleClassNames="text-transparent"
+        >
+          <p className="mt-16 max-w-2xl text-2xl">{about.about.career}</p>
+        </ScrollSection>
+        <ScrollSection
+          threshold={0.6}
+          classNames="duration-500 transition-colors"
+          nonVisibleClassNames="text-transparent"
+        >
+          <p className="mt-16 max-w-2xl text-2xl">{about.about.now}</p>
+        </ScrollSection>
+      </section>
 
-      <h2 className="mt-16 text-3xl text-gray-700">Fun facts</h2>
+      <h2 className="text-3xl text-gray-700">Fun facts</h2>
       <p className="mt-4 rounded-md bg-gray-100 px-16 pb-16 pt-32 text-3xl transition-shadow hover:shadow-md">
         {about.facts.twin}
       </p>
