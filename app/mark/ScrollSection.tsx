@@ -1,28 +1,31 @@
 'use client';
-import clsx from 'clsx';
-import { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, FC } from 'react';
 
-const ScrollSection = ({
-  children,
-  threshold,
-  classNames,
-  nonVisibleClassNames,
-}: Props) => {
-  const { root, isVisible } = useScrollObserver(threshold);
+const ScrollSection = ({ children: Content, threshold, rootMargin }: Props) => {
+  const { root, isVisible } = useScrollObserver({
+    rootMargin,
+    threshold,
+  });
+
   return (
-    <div
-      ref={root}
-      className={clsx(classNames, {
-        ...(nonVisibleClassNames ? { [nonVisibleClassNames]: !isVisible } : {}),
-      })}
-    >
-      {children}
+    <div ref={root}>
+      {Content ? (
+        <Content
+          data-scroll={isVisible ? 'visible' : 'hidden'}
+          visible={isVisible}
+        />
+      ) : null}
     </div>
   );
 };
 
 // Can we use callback refs to register an arbitrary number of elements?
-const useScrollObserver = (threshold: number = 0) => {
+const useScrollObserver = (options?: ScrollObserverOptions) => {
+  const {
+    rootMargin: { top, right, bottom, left },
+    threshold,
+  } = getDefaultedOptions(options);
+
   const observer = useRef<IntersectionObserver | null>(null);
   const root = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -39,6 +42,7 @@ const useScrollObserver = (threshold: number = 0) => {
         });
       },
       {
+        rootMargin: `-${top}px -${right}px -${bottom}px -${left}px`,
         threshold,
       },
     );
@@ -48,15 +52,49 @@ const useScrollObserver = (threshold: number = 0) => {
     return () => {
       observer.current?.disconnect();
     };
-  }, [threshold]);
+  }, [threshold, top, right, bottom, left]);
 
-  return { root, isVisible };
+  const register = (element: Element) => {
+    // TODO how does this handle when a new observer is created?
+    observer.current?.observe(element);
+
+    return () => {
+      observer.current?.unobserve(element);
+    };
+  };
+
+  return { root, isVisible, register };
 };
 
-interface Props extends PropsWithChildren {
+const getDefaultedOptions = (options?: Partial<ScrollObserverOptions>) => ({
+  threshold: options?.threshold ?? 0,
+  rootMargin: {
+    top: options?.rootMargin?.top ?? 0,
+    bottom: options?.rootMargin?.bottom ?? 0,
+    left: options?.rootMargin?.left ?? 0,
+    right: options?.rootMargin?.right ?? 0,
+  },
+});
+
+interface ScrollObserverOptions {
   threshold?: number;
-  classNames?: string;
-  nonVisibleClassNames?: string;
+  rootMargin?: {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  };
+}
+
+interface Props {
+  children?: FC<{ visible: boolean }>;
+  threshold?: number;
+  rootMargin?: {
+    top?: number;
+    bottom?: number;
+    left?: number;
+    right?: number;
+  };
 }
 
 export default ScrollSection;
