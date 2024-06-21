@@ -10,12 +10,12 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className="bg-neutral-100">
-        <div className="mx-auto max-w-screen-lg">
+        <div className="mx-auto max-w-screen-xl">
           <nav className="flex items-center justify-between py-6">
             <Link href="/" className="text-2xl font-semibold">
               Koester Dev
             </Link>
-            <div className="flex gap-4">
+            <div className="flex gap-4 text-lg font-semibold">
               <Link href="/mark">Mark</Link>
               <Link href="/nick">Nick</Link>
             </div>
