@@ -1,5 +1,4 @@
-'use client';
-import { useEffect, useRef, useState, FC } from 'react';
+import { useEffect, useRef, useState, FC, ReactNode } from 'react';
 
 const ScrollSection = ({ children: Content, threshold, rootMargin }: Props) => {
   const { root, isVisible } = useScrollObserver({
@@ -8,12 +7,15 @@ const ScrollSection = ({ children: Content, threshold, rootMargin }: Props) => {
   });
 
   return (
-    <div ref={root}>
-      {Content ? (
-        <Content
-          data-scroll={isVisible ? 'visible' : 'hidden'}
-          visible={isVisible}
-        />
+    <div
+      data-scroll={isVisible ? 'visible' : 'hidden'}
+      ref={root}
+      className="group"
+    >
+      {Content && typeof Content === 'function' ? (
+        <Content visible={isVisible} />
+      ) : Content ? (
+        Content
       ) : null}
     </div>
   );
@@ -28,7 +30,7 @@ const useScrollObserver = (options?: ScrollObserverOptions) => {
 
   const observer = useRef<IntersectionObserver | null>(null);
   const root = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     if (observer.current) {
@@ -87,7 +89,7 @@ interface ScrollObserverOptions {
 }
 
 interface Props {
-  children?: FC<{ visible: boolean }>;
+  children?: ReactNode | FC<{ visible: boolean }>;
   threshold?: number;
   rootMargin?: {
     top?: number;
