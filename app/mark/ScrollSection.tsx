@@ -1,6 +1,12 @@
+import clsx from 'clsx';
 import { useEffect, useRef, useState, FC, ReactNode } from 'react';
 
-const ScrollSection = ({ children: Content, threshold, rootMargin }: Props) => {
+const ScrollSection = ({
+  children: Content,
+  className,
+  threshold,
+  rootMargin,
+}: Props) => {
   const { root, isVisible } = useScrollObserver({
     rootMargin,
     threshold,
@@ -10,7 +16,7 @@ const ScrollSection = ({ children: Content, threshold, rootMargin }: Props) => {
     <div
       data-scroll={isVisible ? 'visible' : 'hidden'}
       ref={root}
-      className="group"
+      className={clsx('group', className)}
     >
       {Content && typeof Content === 'function' ? (
         <Content visible={isVisible} />
@@ -21,7 +27,6 @@ const ScrollSection = ({ children: Content, threshold, rootMargin }: Props) => {
   );
 };
 
-// Can we use callback refs to register an arbitrary number of elements?
 const useScrollObserver = (options?: ScrollObserverOptions) => {
   const {
     rootMargin: { top, right, bottom, left },
@@ -30,7 +35,7 @@ const useScrollObserver = (options?: ScrollObserverOptions) => {
 
   const observer = useRef<IntersectionObserver | null>(null);
   const root = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (observer.current) {
@@ -90,6 +95,7 @@ interface ScrollObserverOptions {
 
 interface Props {
   children?: ReactNode | FC<{ visible: boolean }>;
+  className?: string;
   threshold?: number;
   rootMargin?: {
     top?: number;
