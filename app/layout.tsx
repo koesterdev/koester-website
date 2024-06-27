@@ -9,7 +9,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body className="bg-neutral-100">
+      <body className="bg-gradient-to-bl from-gray-800 to-gray-900 to-30% text-gray-200">
         <div className="mx-auto max-w-screen-xl">
           <nav className="flex items-center justify-between py-6">
             <Link href="/" className="text-2xl font-semibold">
