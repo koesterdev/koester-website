@@ -21,6 +21,59 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cloudinary-util/types@npm:1.0.5":
+  version: 1.0.5
+  resolution: "@cloudinary-util/types@npm:1.0.5"
+  checksum: 10c0/d64f0f12ac3353f10764997cce67c96e41c1ec5f5c332748236cf0267058f6d5bd3b612b77ef438e68b827f024116fb4e982d422207d40ab3133885a159cb118
+  languageName: node
+  linkType: hard
+
+"@cloudinary-util/url-loader@npm:5.3.1":
+  version: 5.3.1
+  resolution: "@cloudinary-util/url-loader@npm:5.3.1"
+  dependencies:
+    "@cloudinary-util/types": "npm:1.0.5"
+    "@cloudinary-util/util": "npm:3.0.2"
+    "@cloudinary/url-gen": "npm:1.15.0"
+    zod: "npm:^3.22.4"
+  checksum: 10c0/703c1c61e3a938459fdf72f8ed72b3cefd57fb300802c3cb395345b9fe6cc82b3467db68250f175eb490b47b5a3cbf1542f1bb9ce1fceb27c0ff8d496c99857c
+  languageName: node
+  linkType: hard
+
+"@cloudinary-util/util@npm:3.0.2, @cloudinary-util/util@npm:^3.0.0":
+  version: 3.0.2
+  resolution: "@cloudinary-util/util@npm:3.0.2"
+  checksum: 10c0/89070ff2979731e8c1a0993a7e0dc5f2b77b934d056a67947726f3edfafcd70d5247e08e86506fa9957a01c711c56c1d0995e61831594cb86d5b863011d627b4
+  languageName: node
+  linkType: hard
+
+"@cloudinary/transformation-builder-sdk@npm:^1.10.0, @cloudinary/transformation-builder-sdk@npm:^1.13.0":
+  version: 1.13.3
+  resolution: "@cloudinary/transformation-builder-sdk@npm:1.13.3"
+  dependencies:
+    "@cloudinary/url-gen": "npm:^1.7.0"
+  checksum: 10c0/2f2b2e29ff0e0be205c6d4a20b6e8831e47d2b479e66cebd1b927ac4a7b864ecdedd6d98c3a153ab6353d8ac27f84ceae77949b6151ef682b8268107f674afdc
+  languageName: node
+  linkType: hard
+
+"@cloudinary/url-gen@npm:1.15.0":
+  version: 1.15.0
+  resolution: "@cloudinary/url-gen@npm:1.15.0"
+  dependencies:
+    "@cloudinary/transformation-builder-sdk": "npm:^1.10.0"
+  checksum: 10c0/4b50b690f40b117068d7396906e9bbda36bd4b8e6143bbc8ad57709cf18f7b3953611a414f56f6551680277e683c3e82f581b01d67e6d06ff88125f8c8f447d6
+  languageName: node
+  linkType: hard
+
+"@cloudinary/url-gen@npm:^1.7.0":
+  version: 1.19.0
+  resolution: "@cloudinary/url-gen@npm:1.19.0"
+  dependencies:
+    "@cloudinary/transformation-builder-sdk": "npm:^1.13.0"
+  checksum: 10c0/bfef710f7ea7b7ebd8752cf8bae4e0f860ce9f9afb970ce5c7592b45d38f4c9543ff211752678ca034c0215c9cfa5bd8230e864d3009d61a923f39db57c770e5
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -323,6 +376,13 @@ __metadata:
   peerDependencies:
     tailwindcss: "*"
   checksum: 10c0/6c01287e7492c001595cd5a39765f313e48e1d2997ea78823919edabd692300d144c42b6e16dee6e077a683e635b9164ff985d5a0f8eeff7824b2d119151899e
+  languageName: node
+  linkType: hard
+
+"@tsconfig/recommended@npm:^1.0.3":
+  version: 1.0.6
+  resolution: "@tsconfig/recommended@npm:1.0.6"
+  checksum: 10c0/4789509c7958c99cfbfc1c41d59b4af21bd628d3914930529b70159572902e86727de15c4d99725169eeb56d91024497a5e1358a6293a43112a715012d226bec
   languageName: node
   linkType: hard
 
@@ -2435,6 +2495,7 @@ __metadata:
     eslint: "npm:^8"
     eslint-config-next: "npm:14.2.3"
     next: "npm:14.2.3"
+    next-cloudinary: "npm:^6.6.2"
     postcss: "npm:^8"
     prettier: "npm:^3.3.1"
     prettier-plugin-tailwindcss: "npm:^0.6.2"
@@ -2749,6 +2810,21 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: 10c0/3ec9fd413e7bf071c937ae60d572bc67155262068ed522cf4b3be5edbe6ddf67d095ec03a3a14ebf8fc8e95f8e1d61be4869db0dbb0de696f6b837358bd43fc2
+  languageName: node
+  linkType: hard
+
+"next-cloudinary@npm:^6.6.2":
+  version: 6.6.2
+  resolution: "next-cloudinary@npm:6.6.2"
+  dependencies:
+    "@cloudinary-util/types": "npm:1.0.5"
+    "@cloudinary-util/url-loader": "npm:5.3.1"
+    "@cloudinary-util/util": "npm:^3.0.0"
+    "@tsconfig/recommended": "npm:^1.0.3"
+  peerDependencies:
+    next: ^12 || ^13 || ^14
+    react: ^17 || ^18
+  checksum: 10c0/cd9772a12a1401b620a42995ab5941d9936602ac99753d96ebfb9fade77d457c8a7549e6d24549346c45b150e6f174a586250673dd14e4a731fed90744e0a3c1
   languageName: node
   linkType: hard
 
@@ -4233,5 +4309,12 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10c0/dceb44c28578b31641e13695d200d34ec4ab3966a5729814d5445b194933c096b7ced71494ce53a0e8820685d1d010df8b2422e5bf2cdea7e469d97ffbea306f
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.23.8
+  resolution: "zod@npm:3.23.8"
+  checksum: 10c0/8f14c87d6b1b53c944c25ce7a28616896319d95bc46a9660fe441adc0ed0a81253b02b5abdaeffedbeb23bdd25a0bf1c29d2c12dd919aef6447652dd295e3e69
   languageName: node
   linkType: hard
