@@ -11,7 +11,7 @@ const RootLayout = ({
     <html lang="en">
       <body className="bg-gradient-to-bl from-gray-800 to-gray-900 to-30% text-gray-200">
         <div className="mx-auto max-w-screen-xl">
-          <nav className="flex items-center justify-between py-6">
+          <nav className="flex items-center justify-between px-4 py-6">
             <Link href="/" className="text-2xl font-semibold">
               Koester Dev
             </Link>
@@ -20,7 +20,7 @@ const RootLayout = ({
               <Link href="/nick">Nick</Link>
             </div>
           </nav>
-          <main>{children}</main>
+          <main className="px-4">{children}</main>
         </div>
       </body>
     </html>
