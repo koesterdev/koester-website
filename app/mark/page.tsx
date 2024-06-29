@@ -16,7 +16,7 @@ const MarkPage = () => {
 };
 
 export const metadata = {
-  title: 'About Mark Koester',
+  title: 'Koester | Mark',
 };
 
 export default MarkPage;

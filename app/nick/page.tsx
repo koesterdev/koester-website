@@ -1,7 +1,7 @@
+import { Metadata } from 'next';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 import resume from './resume.json';
 import Position from './Position';
-import { Metadata } from 'next';
 
 const Nick = () => {
   return (
