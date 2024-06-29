@@ -61,16 +61,7 @@ const useScrollObserver = (options?: ScrollObserverOptions) => {
     };
   }, [threshold, top, right, bottom, left]);
 
-  const register = (element: Element) => {
-    // TODO how does this handle when a new observer is created?
-    observer.current?.observe(element);
-
-    return () => {
-      observer.current?.unobserve(element);
-    };
-  };
-
-  return { root, isVisible, register };
+  return { root, isVisible };
 };
 
 const getDefaultedOptions = (options?: Partial<ScrollObserverOptions>) => ({

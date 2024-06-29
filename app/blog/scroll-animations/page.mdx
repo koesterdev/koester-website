@@ -1,0 +1,32 @@
+# Implementing scroll triggered animations in React
+
+Scroll monitoring can be used to update state or trigger an action based on their position on the page. It can be used for things like conditionally rendering elements, animating elements as they come into view, live table of contents, or infinite scrolling lists
+Libraries exist that can be used to implement this, but it seems like a simple enough task that it’s worth knowing how to do on your own.
+
+# What is intersection observer
+
+The tool that browsers provide to implement scroll spy. This is basically just a class that you can provide some DOM elements to observe and trigger a callback when an element enters the viewport. It doesn’t provide very many abstractions of its own, so we’re going to have to implement those ourselves.
+
+#What we’re given (observer) vs what we want (declarative interface using React)
+
+- Given: low level browser class that takes dom elements as inputs and triggers a callback
+- Want: declarative component or hook that can complement other popular libraries like tailwind or headless ui. Implementing scrollspy should interfere with other aspects of your code
+
+# Pulling intersection observer into a hook
+
+- Create a scroll observer using useRef
+- Pass through scroll observer options
+- useState to manage whether the section is in view
+- useEffect to observe/cleanup stuff
+- return isvisible and a ref for the root
+
+# Using the hook to make ScrollSection component
+
+- Pass in isVisible prop
+- Target with data-scroll attribute
+
+# Demo of animations
+
+Future improvements: table of content or minimap stuff?
+
+If you want more sophisticated stuff, check out react-intersection-observer-hook or framer motion

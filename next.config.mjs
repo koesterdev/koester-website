@@ -1,5 +1,8 @@
+import createMdx from '@next/mdx';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'mdx'],
   redirects: () => [
     {
       source: '/:path*',
@@ -34,4 +37,6 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withMdx = createMdx();
+
+export default withMdx(nextConfig);
