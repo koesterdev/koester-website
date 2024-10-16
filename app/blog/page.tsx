@@ -1,12 +1,12 @@
 import { readFile } from 'node:fs/promises';
-import { basename, dirname } from 'node:path';
+import { parse } from 'node:path';
+import { compileMDX } from 'next-mdx-remote/rsc';
 import { globby } from 'globby';
 import { z } from 'zod';
-import matter from 'gray-matter';
 import Link from 'next/link';
 
 const BlogIndex = async () => {
-  const paths = await globby('**/page.mdx');
+  const paths = await globby('content/*.mdx');
   const posts = await Promise.all(paths.map(getPostMetadata));
   return (
     <div>
@@ -36,15 +36,18 @@ const PostInfo = ({
 
 const getPostMetadata = async (post: string) => {
   const content = await readFile(post);
-  const metadata = matter(content);
-  const slug = basename(dirname(post));
-  return [slug, PostMetadata.parse(metadata.data)] as const;
+  const { frontmatter } = await compileMDX<unknown>({
+    source: content,
+    options: { parseFrontmatter: true },
+  });
+  const slug = parse(post).name;
+  return [slug, PostMetadata.parse(frontmatter)] as const;
 };
 
 const PostMetadata = z.object({
   title: z.string(),
   description: z.string(),
-  published: z.date(),
+  published: z.string().date(),
   author: z.enum(['mark', 'nick']),
 });
 

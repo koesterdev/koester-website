@@ -1,5 +1,3 @@
-import createMdx from '@next/mdx';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
@@ -37,6 +35,4 @@ const nextConfig = {
   },
 };
 
-const withMdx = createMdx();
-
-export default withMdx(nextConfig);
+export default nextConfig;
