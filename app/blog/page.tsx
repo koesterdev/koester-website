@@ -12,16 +12,18 @@ const BlogIndex = async () => {
     <div>
       <h1>All posts</h1>
       <ul>
-        {posts.map(([slug, post]) => (
-          <PostInfo key={post.title} post={post} slug={slug} />
-        ))}
+        {posts
+          .filter(([, { published }]) => published)
+          .map(([slug, post]) => (
+            <PostInfo key={post.title} post={post} slug={slug} />
+          ))}
       </ul>
     </div>
   );
 };
 
 const PostInfo = ({
-  post: { title, author, description, published },
+  post: { title, author, description, date },
   slug,
 }: Props) => {
   return (
@@ -29,7 +31,7 @@ const PostInfo = ({
       <Link href={`/blog/${slug}`}>{title}</Link>
       {description}
       {author}
-      {published.toString()}
+      {date.toString()}
     </li>
   );
 };
@@ -47,8 +49,9 @@ const getPostMetadata = async (post: string) => {
 const PostMetadata = z.object({
   title: z.string(),
   description: z.string(),
-  published: z.string().date(),
+  date: z.string().date(),
   author: z.enum(['mark', 'nick']),
+  published: z.boolean(),
 });
 
 interface Props {
