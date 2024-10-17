@@ -11,7 +11,11 @@ const BlogPost = async ({ params: { slug } }: RouteProps<'slug'>) => {
     notFound();
   }
 
-  return <MDXRemote source={content} options={{ parseFrontmatter: true }} />;
+  return (
+    <div className="min-h-screen">
+      <MDXRemote source={content} options={{ parseFrontmatter: true }} />
+    </div>
+  );
 };
 
 const getPostContent = async (post: string) => {
@@ -62,7 +66,7 @@ export const generateMetadata = async ({
   if (!post) {
     return undefined;
   }
-  return { title: post.metadata.title };
+  return { title: `${post.metadata.title} | Koester` };
 };
 
 interface RouteProps<T extends string> {

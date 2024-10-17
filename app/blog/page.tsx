@@ -9,8 +9,8 @@ const BlogIndex = async () => {
   const paths = await globby('content/*.mdx');
   const posts = await Promise.all(paths.map(getPostMetadata));
   return (
-    <div>
-      <h1>All posts</h1>
+    <div className="min-h-screen max-w-screen-sm">
+      <h1 className="mt-80 text-lg font-semibold text-blue-300">Articles</h1>
       <ul>
         {posts
           .filter(([, { published }]) => published)
@@ -27,11 +27,23 @@ const PostInfo = ({
   slug,
 }: Props) => {
   return (
-    <li>
-      <Link href={`/blog/${slug}`}>{title}</Link>
-      {description}
-      {author}
-      {date.toString()}
+    <li className="my-16">
+      <Link
+        data-author={author}
+        className="text-xl font-semibold hover:underline data-[author=mark]:decoration-blue-300 data-[author=nick]:decoration-green-300"
+        href={`/blog/${slug}`}
+      >
+        {title}
+      </Link>
+      <p className="text-lg text-gray-400">
+        {date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+        {' by '} <span>{author === 'mark' ? 'Mark' : 'Nick'}</span>
+      </p>
+      <p className="mt-4">{description}</p>
     </li>
   );
 };
@@ -49,7 +61,7 @@ const getPostMetadata = async (post: string) => {
 const PostMetadata = z.object({
   title: z.string(),
   description: z.string(),
-  date: z.string().date(),
+  date: z.coerce.date(),
   author: z.enum(['mark', 'nick']),
   published: z.boolean(),
 });
