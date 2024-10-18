@@ -3,7 +3,7 @@ title: Scroll Triggered Animations
 description: Implementing simple scroll-triggered animations
 author: mark
 date: 2024-10-13
-published: true
+published: false
 ---
 
 # Implementing scroll triggered animations in React
@@ -15,7 +15,7 @@ Libraries exist that can be used to implement this, but it seems like a simple e
 
 The tool that browsers provide to implement scroll spy. This is basically just a class that you can provide some DOM elements to observe and trigger a callback when an element enters the viewport. It doesn’t provide very many abstractions of its own, so we’re going to have to implement those ourselves.
 
-#What we’re given (observer) vs what we want (declarative interface using React)
+# What we’re given (observer) vs what we want (declarative interface using React)
 
 - Given: low level browser class that takes dom elements as inputs and triggers a callback
 - Want: declarative component or hook that can complement other popular libraries like tailwind or headless ui. Implementing scrollspy should interfere with other aspects of your code
