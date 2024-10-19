@@ -1,54 +1,47 @@
 import { parse } from 'node:path';
-import { readFile } from 'node:fs/promises';
-import { z } from 'zod';
-import { globby } from 'globby';
-import { MDXRemote, compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { globby } from 'globby';
+import { getPostDetails } from '../post';
 
 const BlogPost = async ({ params: { slug } }: RouteProps<'slug'>) => {
-  const content = await getPostContent(slug);
-  if (!content) {
+  const post = await getPostDetails(`content/${slug}.mdx`);
+  if (!post?.metadata.published) {
     notFound();
   }
 
-  return <MDXRemote source={content} options={{ parseFrontmatter: true }} />;
+  return (
+    <div className="min-h-screen">
+      <div className="mt-48 text-center">
+        <h1 className="text-3xl font-semibold">{post.metadata.title}</h1>
+        <p className="mt-4 text-2xl text-gray-400">
+          Posted by{' '}
+          <span className="text-gray-100">{post.metadata.author.fullName}</span>{' '}
+          on{' '}
+          <span className="text-gray-100">
+            {post.metadata.date.toLocaleDateString('en-us', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </span>
+        </p>
+      </div>
+      <MDXRemote
+        source={post.rawContent}
+        options={{ parseFrontmatter: true }}
+        components={{
+          h1: ({ children }) => (
+            <h2 className="mb-10 mt-20 text-2xl font-semibold text-blue-300">
+              {children}
+            </h2>
+          ),
+          p: ({ children }) => <p className="text-lg">{children}</p>,
+        }}
+      />
+    </div>
+  );
 };
-
-const getPostContent = async (post: string) => {
-  try {
-    const details = await getPostDetails(post);
-    if (!details?.metadata.published) {
-      return undefined;
-    }
-    return details.rawContent;
-  } catch {
-    return undefined;
-  }
-};
-
-const getPostDetails = async (post: string) => {
-  try {
-    const content = await readFile(`content/${post}.mdx`);
-    const { frontmatter, content: compiledContent } = await compileMDX<unknown>(
-      {
-        source: content,
-        options: { parseFrontmatter: true },
-      },
-    );
-    return {
-      metadata: FrontmatterSchema.parse(frontmatter),
-      content: compiledContent,
-      rawContent: content,
-    };
-  } catch {
-    return undefined;
-  }
-};
-
-const FrontmatterSchema = z.object({
-  title: z.string(),
-  published: z.boolean(),
-});
 
 export const generateStaticParams = async () => {
   const paths = await globby('content/*.mdx');
@@ -62,7 +55,7 @@ export const generateMetadata = async ({
   if (!post) {
     return undefined;
   }
-  return { title: post.metadata.title };
+  return { title: `${post.metadata.title} | Koester` };
 };
 
 interface RouteProps<T extends string> {
